@@ -60,6 +60,6 @@ Open: http://127.0.0.1:5000/
 
 ## Example UI
 Below is an example of the Phishing Campaign Tracker interface in action:
-
 ![Phishing Campaign Tracker Screenshot](screenshot.png)
+
 
