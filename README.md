@@ -5,12 +5,7 @@ This project demonstrates practical **SOC/Incident Response** skills: tracking i
 
 ---
 
-## Why this matters
-- **Add records** → shows you can structure incident data consistently.
-- **Search & filter** → shows triage thinking (find the signal fast).
-- **Sort** → helps prioritize by sender/subject/status.
-- **Delete** → basic data hygiene and lifecycle.
-- **/api/data** → proves you think about integration/automation (export to JSON).
+.
 
 ---
 
@@ -53,8 +48,6 @@ phishing-campaign-tracker/
 │ └── styles.css
 └── README.md
 
-yaml
-Copy
 
 ---
 
