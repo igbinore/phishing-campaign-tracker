@@ -37,6 +37,7 @@ This project demonstrates practical **SOC/Incident Response** skills: tracking i
 ---
 
 ## Project Structure
+```
 phishing-campaign-tracker/
 ├── app.py
 ├── requirements.txt
@@ -47,6 +48,8 @@ phishing-campaign-tracker/
 ├── static/
 │ └── styles.css
 └── README.md
+```
+
 
 
 ---
