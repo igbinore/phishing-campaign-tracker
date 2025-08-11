@@ -54,7 +54,7 @@ phishing-campaign-tracker/
 
 ---
 
-## Run locally
+## How to Run locally
 ```bash
 python -m venv venv
 venv\Scripts\activate
