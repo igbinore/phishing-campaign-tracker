@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phishing Campaign Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Phishing Campaign Tracker</h1>
+
+    <!-- Add Record (simple, no JS) -->
+    <form method="post" action="/add" class="toolbar">
+      <input type="text" name="sender" placeholder="Sender" required>
+      <input type="text" name="subject" placeholder="Subject" required>
+      <input type="url"  name="url" placeholder="URL (https://…)" required>
+      <select name="status" required>
+        <option value="">Status…</option>
+        <option>Reported</option>
+        <option>Blocked</option>
+        <option>Investigating</option>
+      </select>
+      <input type="text" name="notes" placeholder="Notes (optional)">
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- Filters -->
+    <form class="toolbar" method="get" action="/">
+      <input type="text" name="q" value="{{ q }}" placeholder="Search sender, subject, url, notes"/>
+      <select name="status">
+        <option value="" {{ 'selected' if not status else '' }}>All statuses</option>
+        {% for s in ['Reported', 'Blocked', 'Investigating'] %}
+        <option value="{{ s }}" {{ 'selected' if status==s else '' }}>{{ s }}</option>
+        {% endfor %}
+      </select>
+      <select name="sort">
+        <option value="" {{ 'selected' if not sort else '' }}>No sorting</option>
+        {% for s in ['sender', 'subject', 'status'] %}
+        <option value="{{ s }}" {{ 'selected' if sort==s else '' }}>Sort by {{ s.title() }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">Apply</button>
+      {% if q or status or sort %}
+      <a href="/">Reset</a>
+      {% endif %}
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Subject</th>
+          <th>URL</th>
+          <th>Status</th>
+          <th>Notes</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <td>{{ item.sender }}</td>
+          <td>{{ item.subject }}</td>
+          <td class="actions">
+            <a href="{{ item.url }}" target="_blank">{{ item.url }}</a>
+            <div class="small">{{ item.url | replace('http://','') | replace('https://','') | truncate(48) }}</div>
+          </td>
+          <td><span class="badge {{ item.status }}">{{ item.status }}</span></td>
+          <td>{{ item.notes }}</td>
+          <td>
+            <form method="post" action="/delete/{{ item.id }}">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6">No results.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <div>Sample data file: <code>data/phishing_samples.json</code></div>
+      <div>API endpoint: <code>/api/data</code></div>
+    </div>
+  </div>
+</body>
+</html>

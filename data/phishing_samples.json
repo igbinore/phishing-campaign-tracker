@@ -1,0 +1,30 @@
+[
+  {
+    "sender": "security-update@not-microsoft.com",
+    "subject": "Urgent Action Required: Verify your Microsoft 365 account",
+    "url": "http://verify-ms365.example.com/login",
+    "status": "Reported",
+    "notes": "Spoofed Microsoft 365 login page; reported by helpdesk."
+  },
+  {
+    "sender": "finance@fakebankalerts.com",
+    "subject": "Your bank account is locked",
+    "url": "http://unlock-fakebank.example.com",
+    "status": "Blocked",
+    "notes": "Domain newly registered; block at email gateway."
+  },
+  {
+    "sender": "hr-benefits@corp-benefits.net",
+    "subject": "Open enrollment changes \u2013 review now",
+    "url": "http://benefits-update.example.com",
+    "status": "Investigating",
+    "notes": "Looks like a credential harvest targeting HR season."
+  },
+  {
+    "sender": "ceo@company-exec-mail.com",
+    "subject": "Do me a quick favor",
+    "url": "mailto:reply@fraudster.net",
+    "status": "Reported",
+    "notes": "BEC attempt; requests gift cards."
+  }
+]

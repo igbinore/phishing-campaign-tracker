@@ -1,50 +1,68 @@
-# phishing-campaign-tracker
-A simple web app to track and analyze phishing campaign details.
-Phishing Campaign Tracker
-A simple web application to track, analyze, and visualize phishing campaign details. This project demonstrates skills in data collection, analysis, and presentation relevant to cybersecurity operations.
+# Phishing Campaign Tracker
 
-Features
-Stores phishing campaign data such as sender, subject, URLs, and status.
+A minimal **Flask** web app to record, search, sort, and manage suspected phishing messages.  
+This project demonstrates practical **SOC/Incident Response** skills: tracking incidents, triaging with search/filter, and keeping a lightweight audit of actions.
 
-Provides filtering and sorting capabilities for quick analysis.
+---
 
-Displays data in a clean, user-friendly dashboard interface.
+## Why this matters
+- **Add records** → shows you can structure incident data consistently.
+- **Search & filter** → shows triage thinking (find the signal fast).
+- **Sort** → helps prioritize by sender/subject/status.
+- **Delete** → basic data hygiene and lifecycle.
+- **/api/data** → proves you think about integration/automation (export to JSON).
 
-Tech Stack
-Python (Flask) or JavaScript (React) — your choice
+---
 
-HTML/CSS for frontend
+## Features
+- Add: sender, subject, URL, status, notes
+- View/Search: search across any field; filter by status
+- Sort: by sender, subject, or status
+- Delete: remove an entry (persists in the JSON file)
+- API: `GET /api/data` returns all records as JSON
 
-JSON or CSV files for sample/mock data
+---
 
-How to Run
-Clone the repo:
+## Tech Stack
+- **Backend**: Python 3, Flask
+- **Frontend**: HTML + minimal CSS
+- **Storage**: JSON file (`data/phishing_samples.json`)
 
-bash
+---
+
+## How it works
+- **Routes**:
+  - `GET /` → render table with search/filter/sort
+  - `POST /add` → append a new record
+  - `POST /delete/<id>` → remove a record by ID
+  - `GET /api/data` → return the data as JSON
+- **Template**: `templates/index.html` (Jinja2)
+- **Persistence**: `data/phishing_samples.json`
+
+---
+
+## Project Structure
+phishing-campaign-tracker/
+├── app.py
+├── requirements.txt
+├── data/
+│ └── phishing_samples.json
+├── templates/
+│ └── index.html
+├── static/
+│ └── styles.css
+└── README.md
+
+yaml
 Copy
-Edit
-git clone https://github.com/igbinore/phishing-campaign-tracker.git  
-Install dependencies (if using Flask):
 
-bash
-Copy
-Edit
-pip install -r requirements.txt  
+---
 
-Run the app:
-
-bash
-Copy
-Edit
-python app.py  
-
-
-Skills Showcased
-
-Web development (Flask/React)
-
-Data handling and visualization
-
-Basic cybersecurity awareness and phishing analysis
-
-Working with structured data (JSON/CSV)
+## Run locally
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+Open: http://127.0.0.1:5000/
+![App Screenshot](screenshot.png)
