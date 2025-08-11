@@ -5,10 +5,6 @@ This project demonstrates practical **SOC/Incident Response** skills: tracking i
 
 ---
 
-.
-
----
-
 ## Features
 - Add: sender, subject, URL, status, notes
 - View/Search: search across any field; filter by status
@@ -54,11 +50,16 @@ phishing-campaign-tracker/
 
 ---
 
-## How to Run locally
+## How to Run Locally
 ```bash
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
 Open: http://127.0.0.1:5000/
-![App Screenshot](screenshot.png)
+
+## Example UI
+Below is an example of the Phishing Campaign Tracker interface in action:
+
+![Phishing Campaign Tracker Screenshot](screenshot.png)
+
